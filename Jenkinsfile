@@ -43,18 +43,10 @@ pipeline {
          }
 
       }
-      stage ('Notify')
-      { steps{
-            //Send notification mail after successful deployment
-           mail bcc: '', body: '''Hello,
-
-
-Your build has got executed successfully
-
-
-Regards,
-Team Jenkins''', cc: '', from: '', replyTo: '', subject: 'Jenkins Mail', to: 'shrissethi@gmail.com' 
-      }
-      }
+      stage ('Clean'){ 
+         // Clean the workspace after build execution is completed
+         steps{
+            cleanWs()
+         }
    }
 }
